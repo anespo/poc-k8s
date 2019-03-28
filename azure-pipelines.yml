@@ -1,19 +1,19 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+apiVersion: v1
+kind: Config
+preferences: {}
 
-trigger:
-- master
+clusters:
+- cluster:
+  name: Kuberenets1
+- cluster:
+  name: Kuberenets2
 
-pool:
-  vmImage: 'Ubuntu-16.04'
+users:
+- name: admin
+- name: admin
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+contexts:
+- context:
+  name: k8s-frontend-1
+- context:
+  name: k8s-frontend-2
